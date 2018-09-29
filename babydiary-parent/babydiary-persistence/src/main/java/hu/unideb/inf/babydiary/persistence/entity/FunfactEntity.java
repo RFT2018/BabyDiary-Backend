@@ -29,13 +29,13 @@ public class FunfactEntity extends BaseEntity<Long> {
     private String text;
 
     @Column(name = COLUMN_NAME_WEEK)
-    private String week;
+    private int week;
 
     @ManyToMany(mappedBy = "funfacts", fetch = FetchType.LAZY)
     private List<ChildEntity> children;
 
     @Builder
-    public FunfactEntity(Long id, String food, String music, String skills, String text, String week) {
+    public FunfactEntity(Long id, String food, String music, String skills, String text, int week) {
         super(id);
         this.food = food;
         this.music = music;

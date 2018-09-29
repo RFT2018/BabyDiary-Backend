@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import java.time.LocalDate;
+
 import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.AlbumColumName.*;
 import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_ALBUM;
 
@@ -19,7 +21,7 @@ import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_AL
 public class AlbumEntity extends BaseEntity<Long> {
 
     @Column(name = COLUMN_NAME_DATE)
-    private String date;
+    private LocalDate date;
 
     @Column(name = COLUMN_NAME_NAME)
     private String name;
@@ -34,7 +36,7 @@ public class AlbumEntity extends BaseEntity<Long> {
     private ChildEntity childEntity;
 
     @Builder
-    public AlbumEntity(Long id, String date, String name, String size, String type) {
+    public AlbumEntity(Long id, LocalDate date, String name, String size, String type) {
         super(id);
         this.date = date;
         this.name = name;

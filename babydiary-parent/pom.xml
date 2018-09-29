@@ -10,6 +10,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>babydiary-persistence</module>
+        <module>babydiary-service-api</module>
     </modules>
 
     <parent>

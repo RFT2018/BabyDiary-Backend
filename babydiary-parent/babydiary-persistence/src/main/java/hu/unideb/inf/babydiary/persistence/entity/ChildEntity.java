@@ -3,14 +3,16 @@ package hu.unideb.inf.babydiary.persistence.entity;
 import lombok.*;
 
 import javax.persistence.*;
-
+import java.time.LocalDate;
 import java.util.List;
 
 import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.ChildColumName.*;
 import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.FunfactColumName.COLUMN_NAME_FUNFACT_ID;
 import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.ReferencedColumName.REFERENCED_COLUM_NAME_ID;
+import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.SexColomnName.COLUMN_NAME_SEX;
 import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_CHILD;
 import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_CHILD_HAS_FUNFACT;
+import static javax.persistence.EnumType.STRING;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +23,7 @@ import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_CH
 public class ChildEntity extends BaseEntity<Long> {
 
     @Column(name = COLUMN_NAME_BIRTHDAY)
-    private String birthday;
+    private LocalDate birthday;
 
     @Column(name = COLUMN_NAME_CHILD_FIRSTNAME)
     private String firstName;
@@ -29,17 +31,18 @@ public class ChildEntity extends BaseEntity<Long> {
     @Column(name = COLUMN_NAME_CHILD_LASTNAME)
     private String lastName;
 
-    @Column(name = COLUMN_NAME_CHILD_SEX)
-    private String sex;
+    @Column(name = COLUMN_NAME_SEX)
+    @Enumerated(value = STRING)
+    private SexEntity sex;
 
     @Column(name = COLUMN_NAME_CONCEPTION)
-    private String conception;
+    private LocalDate conception;
 
     @Column(name = COLUMN_NAME_HEIGHT)
-    private String height;
+    private int height;
 
     @Column(name = COLUMN_NAME_WEIGHT)
-    private String weight;
+    private int weight;
 
     @ManyToOne
     private FamilyEntity family;
@@ -54,7 +57,7 @@ public class ChildEntity extends BaseEntity<Long> {
     private List<AlbumEntity> albums;
 
     @Builder
-    public ChildEntity(Long id, String birthday, String firstName, String lastName, String sex, String conception, String height, String weight, FamilyEntity family) {
+    public ChildEntity(Long id, LocalDate birthday, String firstName, String lastName, SexEntity sex, LocalDate conception, int height, int weight, FamilyEntity family, List<FunfactEntity> funfacts, List<AlbumEntity> albums) {
         super(id);
         this.birthday = birthday;
         this.firstName = firstName;
@@ -64,5 +67,7 @@ public class ChildEntity extends BaseEntity<Long> {
         this.height = height;
         this.weight = weight;
         this.family = family;
+        this.funfacts = funfacts;
+        this.albums = albums;
     }
 }

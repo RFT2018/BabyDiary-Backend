@@ -22,13 +22,13 @@ public class WishlistEntity extends BaseEntity<Long> {
     private String item;
 
     @Column(name = COLUMN_NAME_PRICE)
-    private String price;
+    private int price;
 
     @ManyToOne
     private FamilyEntity family;
 
     @Builder
-    public WishlistEntity(Long id, String item, String price) {
+    public WishlistEntity(Long id, String item, int price) {
         super(id);
         this.item = item;
         this.price = price;

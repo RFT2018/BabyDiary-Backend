@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.SexColomnName.COLUMN_NAME_SEX;
 import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.UserColumName.*;
 import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_USER;
 import static javax.persistence.EnumType.STRING;
@@ -31,8 +32,9 @@ public class UserEntity extends BaseEntity<Long>{
     @Column(name = COLUMN_NAME_USER_LASTNAME)
     private String lastName;
 
-    @Column(name = COLUMN_NAME_USER_SEX)
-    private String sex;
+    @Column(name = COLUMN_NAME_SEX)
+    @Enumerated(value = STRING)
+    private SexEntity sex;
 
     @Column(name = COLUMN_NAME_USER_ROLE)
     @Enumerated(value = STRING)
@@ -42,14 +44,15 @@ public class UserEntity extends BaseEntity<Long>{
     private FamilyEntity family;
 
     @Builder
-    public UserEntity(Long id, String username, String email, String password, String firstName, String lastName, UserRoleEntity userRoleEntity ) {
+    public UserEntity(Long id, String username, String email, String password, String firstName, String lastName, SexEntity sex, UserRoleEntity userRole, FamilyEntity family) {
         super(id);
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userRole = userRoleEntity;
+        this.sex = sex;
+        this.userRole = userRole;
+        this.family = family;
     }
-
 }

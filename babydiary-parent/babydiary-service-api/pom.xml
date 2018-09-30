@@ -17,6 +17,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>hu.unideb.inf</groupId>
+            <artifactId>babydiary-commons-pojo</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

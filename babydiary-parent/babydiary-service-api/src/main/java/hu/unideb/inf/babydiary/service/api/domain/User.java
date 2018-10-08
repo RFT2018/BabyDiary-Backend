@@ -2,6 +2,7 @@ package hu.unideb.inf.babydiary.service.api.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import hu.unideb.inf.babydiary.commons.pojo.enumeration.*;
 
 import java.io.Serializable;
 
@@ -13,18 +14,18 @@ public class User implements Serializable {
 
     private String username;
 
-        private String email;
+    private String email;
 
-        private String password;
+    private String password;
 
     private String firstName;
 
     private String lastName;
 
-    private String sex;
+    private Sex sex;
 
-    private String userRole;
+    private UserRole userRole;
 
-    private String family;
+    private Family family;
 
 }

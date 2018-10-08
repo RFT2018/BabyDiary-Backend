@@ -5,11 +5,11 @@ import hu.unideb.inf.babydiary.service.api.domain.Album;
 
 import java.util.List;
 
-public interface Funfact {
+public interface FunfactService {
 
-    Funfact addFunfact(Funfact funfact) throws BaseException;
+    FunfactService addFunfact(FunfactService funfact) throws BaseException;
 
-    Funfact updateFunfact(Funfact funfact) throws BaseException;
+    FunfactService updateFunfact(FunfactService funfact) throws BaseException;
 
     void deleteFunfact(Long id) throws BaseException;
 

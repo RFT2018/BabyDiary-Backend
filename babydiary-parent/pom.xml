@@ -11,6 +11,7 @@
     <modules>
         <module>babydiary-persistence</module>
         <module>babydiary-service-api</module>
+        <module>babydiary-service-impl</module>
     </modules>
 
     <parent>

@@ -27,12 +27,21 @@ public class FamilyEntity extends BaseEntity<Long>{
     private List<ChildEntity> childList;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = TABLE_NAME_FAMILY)
-    private  List<WishlistEntity> WishLists;
+    private  List<WishlistEntity> wishLists;
 
     @Builder
-    public FamilyEntity(Long id, String familyName){
+    public FamilyEntity(Long id, String familyName, List<UserEntity> userList, List<ChildEntity> childList, List<WishlistEntity> wishLists) {
         super(id);
         this.familyName = familyName;
+        this.userList = userList;
+        this.childList = childList;
+        this.wishLists = wishLists;
     }
+
+//    @Builder
+//    public FamilyEntity(Long id, String familyName){
+//        super(id);
+//        this.familyName = familyName;
+//    }
 
 }

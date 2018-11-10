@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RegistrationRequestToUserConverter implements Converter<RegistrationRequest, User> {
+
     @Override
     public User convert(RegistrationRequest registrationRequest) {
         return User.builder()

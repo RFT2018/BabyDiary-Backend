@@ -9,7 +9,7 @@ import hu.unideb.inf.babydiary.service.impl.converter.UserToUserEntityConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -22,51 +22,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUser(User user) throws BaseException {
 
-        return toUser.convert(userRepository.save(toEntity.convert(user)));
-    }
-
-    @Override
-    public User updateUser(User user) throws BaseException {
-        return null;
-    }
-
-    @Override
-    public void deleteUser(Long id) throws BaseException {
-
-    }
-
-    @Override
-    public User save(User user) {
-        return null;
+        return toUser.convert(userRepository.save(Objects.requireNonNull(toEntity.convert(user))));
     }
 
     @Override
     public User findUserByUsername(String username) throws BaseException {
-        return null;
-    }
-
-    @Override
-    public User findUserByEmail(String email) throws BaseException {
-        return null;
-    }
-
-    @Override
-    public User findUserById(Long id) throws BaseException {
-        return null;
-    }
-
-    @Override
-    public List<User> findAllUser() {
-        return null;
-    }
-
-    @Override
-    public List<String> allUsersEmail() {
-        return null;
-    }
-
-    @Override
-    public Long countUsers() {
         return null;
     }
 }

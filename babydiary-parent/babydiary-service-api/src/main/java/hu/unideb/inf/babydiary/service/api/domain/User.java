@@ -26,6 +26,4 @@ public class User implements Serializable {
 
     private UserRole userRole;
 
-    private Family family;
-
 }

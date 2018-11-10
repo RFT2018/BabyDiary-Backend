@@ -12,6 +12,4 @@ public interface RegistrationService {
 
     User register(RegistrationRequest registrationRequest) throws ViolationException, ServiceException, BaseException;
 
-   // UserService addManager(ManagerRegistrationRequest managerRegistrationRequest) throws ViolationException, ServiceException, BaseException;
-
 }

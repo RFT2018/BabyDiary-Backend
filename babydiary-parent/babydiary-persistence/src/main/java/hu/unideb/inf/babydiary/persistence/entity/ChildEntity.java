@@ -1,5 +1,6 @@
 package hu.unideb.inf.babydiary.persistence.entity;
 
+import hu.unideb.inf.babydiary.commons.pojo.enumeration.Sex;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,7 +34,7 @@ public class ChildEntity extends BaseEntity<Long> {
 
     @Column(name = COLUMN_NAME_SEX)
     @Enumerated(value = STRING)
-    private SexEntity sex;
+    private Sex sex;
 
     @Column(name = COLUMN_NAME_CONCEPTION)
     private LocalDate conception;
@@ -57,7 +58,7 @@ public class ChildEntity extends BaseEntity<Long> {
     private List<AlbumEntity> albums;
 
     @Builder
-    public ChildEntity(Long id, LocalDate birthday, String firstName, String lastName, SexEntity sex, LocalDate conception, int height, int weight, FamilyEntity family, List<FunfactEntity> funfacts, List<AlbumEntity> albums) {
+    public ChildEntity(Long id, LocalDate birthday, String firstName, String lastName, Sex sex, LocalDate conception, int height, int weight, FamilyEntity family, List<FunfactEntity> funfacts, List<AlbumEntity> albums) {
         super(id);
         this.birthday = birthday;
         this.firstName = firstName;

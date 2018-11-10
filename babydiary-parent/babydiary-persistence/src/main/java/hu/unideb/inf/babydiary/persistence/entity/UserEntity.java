@@ -1,5 +1,7 @@
 package hu.unideb.inf.babydiary.persistence.entity;
 
+import hu.unideb.inf.babydiary.commons.pojo.enumeration.Sex;
+import hu.unideb.inf.babydiary.commons.pojo.enumeration.UserRole;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,17 +36,18 @@ public class UserEntity extends BaseEntity<Long>{
 
     @Column(name = COLUMN_NAME_SEX)
     @Enumerated(value = STRING)
-    private SexEntity sex;
+    private Sex sex;
 
     @Column(name = COLUMN_NAME_USER_ROLE)
     @Enumerated(value = STRING)
-    private UserRoleEntity userRole;
+    private UserRole userRole;
 
-    @ManyToOne
-    private FamilyEntity family;
+//    @ManyToOne
+//    @JoinColumn(name = COLUMN_NAME_FAMILY_ID)
+//    private FamilyEntity familyEntity;
 
     @Builder
-    public UserEntity(Long id, String username, String email, String password, String firstName, String lastName, SexEntity sex, UserRoleEntity userRole, FamilyEntity family) {
+    public UserEntity(Long id, String username, String email, String password, String firstName, String lastName, Sex sex, UserRole userRole) {
         super(id);
         this.username = username;
         this.email = email;
@@ -53,6 +56,5 @@ public class UserEntity extends BaseEntity<Long>{
         this.lastName = lastName;
         this.sex = sex;
         this.userRole = userRole;
-        this.family = family;
     }
 }

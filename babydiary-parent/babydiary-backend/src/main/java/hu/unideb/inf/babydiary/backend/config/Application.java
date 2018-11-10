@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@Import(PersistenceConfiguration.class)
+@Import({PersistenceConfiguration.class, SecurityConfiguration.class})
 public class Application extends SpringBootServletInitializer {
 
     public static void main(final String[] args) {

@@ -10,8 +10,8 @@ import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_FU
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode()
-@ToString()
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 @Entity
 @Table(name = TABLE_NAME_FUNFACT)
 public class FunfactEntity extends BaseEntity<Long> {

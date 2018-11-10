@@ -11,8 +11,8 @@ import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_FA
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode()
-@ToString()
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 @Entity
 @Table(name = TABLE_NAME_FAMILY)
 public class FamilyEntity extends BaseEntity<Long>{

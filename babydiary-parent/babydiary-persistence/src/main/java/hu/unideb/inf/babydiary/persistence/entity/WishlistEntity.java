@@ -12,8 +12,8 @@ import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_WI
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode()
-@ToString()
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 @Entity
 @Table(name = TABLE_NAME_WISHLIST)
 public class WishlistEntity extends BaseEntity<Long> {

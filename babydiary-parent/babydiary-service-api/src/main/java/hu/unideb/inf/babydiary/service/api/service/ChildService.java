@@ -1,9 +1,11 @@
 package hu.unideb.inf.babydiary.service.api.service;
 
 import hu.unideb.inf.babydiary.commons.pojo.exceptions.BaseException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface ChildService {
 
     ChildService addChild(ChildService child) throws BaseException;

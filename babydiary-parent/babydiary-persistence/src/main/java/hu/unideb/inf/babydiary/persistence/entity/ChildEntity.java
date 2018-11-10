@@ -16,8 +16,8 @@ import static javax.persistence.EnumType.STRING;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode()
-@ToString()
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 @Entity
 @Table(name = TABLE_NAME_CHILD)
 public class ChildEntity extends BaseEntity<Long> {

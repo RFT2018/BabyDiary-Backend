@@ -1,26 +1,29 @@
 package hu.unideb.inf.babydiary.service.api.service;
 
 import hu.unideb.inf.babydiary.commons.pojo.exceptions.BaseException;
+import hu.unideb.inf.babydiary.service.api.domain.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface UserService {
 
-    UserService addCustomer(UserService user) throws BaseException;
+    User addUser(User user) throws BaseException;
 
-    UserService updateUser(UserService user) throws BaseException;
+    User updateUser(User user) throws BaseException;
 
     void deleteUser(Long id) throws BaseException;
 
-    UserService save(UserService user);
+    User save(User user);
 
-    UserService findUserByUsername(String username) throws BaseException;
+    User findUserByUsername(String username) throws BaseException;
 
-    UserService findUserByEmail(String email) throws BaseException;
+    User findUserByEmail(String email) throws BaseException;
 
-    UserService findUserById(Long id) throws BaseException;
+    User findUserById(Long id) throws BaseException;
 
-    List<UserService> findAllUser();
+    List<User> findAllUser();
 
     List<String> allUsersEmail();
 

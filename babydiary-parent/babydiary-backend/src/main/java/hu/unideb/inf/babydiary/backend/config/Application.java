@@ -2,12 +2,14 @@ package hu.unideb.inf.babydiary.backend.config;
 
 import hu.unideb.inf.babydiary.persistence.config.PersistenceConfiguration;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 @Import(PersistenceConfiguration.class)
 public class Application extends SpringBootServletInitializer {
 

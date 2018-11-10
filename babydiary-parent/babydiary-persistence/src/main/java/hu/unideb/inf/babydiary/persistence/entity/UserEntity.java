@@ -11,8 +11,8 @@ import static javax.persistence.EnumType.STRING;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode()
-@ToString()
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, exclude = "password")
 @Entity
 @Table(name = TABLE_NAME_USER, uniqueConstraints = @UniqueConstraint(columnNames = COLUMN_NAME_USERNAME))
 public class UserEntity extends BaseEntity<Long>{

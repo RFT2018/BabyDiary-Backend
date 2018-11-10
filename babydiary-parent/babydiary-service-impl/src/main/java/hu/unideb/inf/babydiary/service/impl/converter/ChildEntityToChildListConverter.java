@@ -4,10 +4,12 @@ import hu.unideb.inf.babydiary.persistence.entity.ChildEntity;
 import hu.unideb.inf.babydiary.service.api.domain.Child;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class ChildEntityToChildListConverter implements Converter<List<ChildEntity>, List<Child>> {
 
     @Autowired

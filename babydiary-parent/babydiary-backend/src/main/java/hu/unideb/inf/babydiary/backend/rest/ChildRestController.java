@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static hu.unideb.inf.babydiary.commons.pojo.path.ChildPath.CHILD_ADD;
+import static hu.unideb.inf.babydiary.commons.pojo.path.ChildPath.CHILD_GETALL;
+import static hu.unideb.inf.babydiary.commons.pojo.path.ChildPath.CHILD_GETONE;
+
 @RestController
 @RequiredArgsConstructor
 public class ChildRestController {
 
     private final ChildService childService;
 
-    @RequestMapping(value = "/child/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = CHILD_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity responseEntity(@RequestBody ChildRequest childRequest) {
         ResponseEntity result;
         try {
@@ -31,14 +35,14 @@ public class ChildRestController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/child/get/{id}")
+    @GetMapping(path = CHILD_GETONE)
     public ResponseEntity<?> getChildById(@PathVariable Long id) {
         Child child = childService.findChildById(id);
         return ResponseEntity.accepted().body(child);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/child/get/all")
+    @GetMapping(path = CHILD_GETALL)
     public ResponseEntity<?> getAllChildren() {
         List<Child> childList = childService.findAllChildren();
         return  ResponseEntity.accepted().body(childList);

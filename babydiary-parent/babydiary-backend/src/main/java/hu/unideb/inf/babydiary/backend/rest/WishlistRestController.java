@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static hu.unideb.inf.babydiary.commons.pojo.path.WishListPath.WISHLIST_ADD;
+import static hu.unideb.inf.babydiary.commons.pojo.path.WishListPath.WISHLIST_GETALL;
+import static hu.unideb.inf.babydiary.commons.pojo.path.WishListPath.WISHLIST_GETONE;
+
 @RestController
 @RequiredArgsConstructor
 public class WishlistRestController {
@@ -19,7 +23,7 @@ public class WishlistRestController {
     private final WishListService wishListService;
 
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/wishlist/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = WISHLIST_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity responseEntity(@RequestBody WishlistRequest wishlistRequest) {
         ResponseEntity result;
         try {
@@ -32,14 +36,14 @@ public class WishlistRestController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/wishlist/get/{id}")
+    @GetMapping(path = WISHLIST_GETONE)
     public ResponseEntity<?> getAlbumBy(@PathVariable Long id) {
         Wishlist wishlist = wishListService.findWishlistById(id);
         return ResponseEntity.accepted().body(wishlist);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/wishlist/get/all")
+    @GetMapping(path = WISHLIST_GETALL)
     public ResponseEntity<?> getAll() {
         List<Wishlist> wishlists = wishListService.findAll();
         return ResponseEntity.accepted().body(wishlists);

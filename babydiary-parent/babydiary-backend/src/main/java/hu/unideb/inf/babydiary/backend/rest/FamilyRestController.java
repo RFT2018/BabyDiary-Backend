@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static hu.unideb.inf.babydiary.commons.pojo.path.FamilyPath.FAMILY_ADD;
+import static hu.unideb.inf.babydiary.commons.pojo.path.FamilyPath.FAMILY_GETALL;
+import static hu.unideb.inf.babydiary.commons.pojo.path.FamilyPath.FAMILY_GETONE;
+
 @RestController
 @RequiredArgsConstructor
 public class FamilyRestController {
@@ -20,7 +24,7 @@ public class FamilyRestController {
     private final FamilyService familyService;
 
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/family/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = FAMILY_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity responseEntity(@RequestBody FamilyRequest familyRequest) throws Exception {
         ResponseEntity result;
         try {
@@ -33,14 +37,14 @@ public class FamilyRestController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/family/get/{id}")
+    @GetMapping(path = FAMILY_GETONE)
     public ResponseEntity<?> getFamilyById(@PathVariable Long id) throws Exception {
         Family family = familyService.findFamilyById(id);
         return ResponseEntity.accepted().body(family);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/family/get/all")
+    @GetMapping(path = FAMILY_GETALL)
     public ResponseEntity<?> getAll() throws BaseException {
         List<Family> familyList = familyService.findAllFamilies();
         return  ResponseEntity.accepted().body(familyList);

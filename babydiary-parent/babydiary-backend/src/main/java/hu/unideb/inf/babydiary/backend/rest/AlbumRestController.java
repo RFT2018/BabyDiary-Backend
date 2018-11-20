@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static hu.unideb.inf.babydiary.commons.pojo.path.AlbumPath.ALBUM_ADD;
+import static hu.unideb.inf.babydiary.commons.pojo.path.AlbumPath.ALBUM_GETALL;
+import static hu.unideb.inf.babydiary.commons.pojo.path.AlbumPath.ALBUM_GETONE;
+
 @RestController
 @RequiredArgsConstructor
 public class AlbumRestController {
@@ -20,7 +24,7 @@ public class AlbumRestController {
     private final AlbumService albumService;
 
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/album/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = ALBUM_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity responseEntity(@RequestBody AlbumRequest albumRequest) throws Exception {
         ResponseEntity result;
         try {
@@ -33,14 +37,14 @@ public class AlbumRestController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/album/get/{id}")
+    @GetMapping(path = ALBUM_GETONE)
     public ResponseEntity<?> getAlbumBy(@PathVariable Long id) throws Exception {
         Album album = albumService.findAlbumById(id);
         return ResponseEntity.accepted().body(album);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping(path = "/album/get/all")
+    @GetMapping(path = ALBUM_GETALL)
     public ResponseEntity<?> getAll() throws BaseException{
         List<Album> albumList = albumService.findAllAlbum();
         return  ResponseEntity.accepted().body(albumList);

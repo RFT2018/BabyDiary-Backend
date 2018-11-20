@@ -12,9 +12,12 @@ public class Funfact implements Serializable {
     private Long id;
 
     private String food;
-        private String music;
-        private String skills;
-        private String text;
-        private int week;
 
+    private String music;
+
+    private String skills;
+
+    private String text;
+
+    private int week;
 }

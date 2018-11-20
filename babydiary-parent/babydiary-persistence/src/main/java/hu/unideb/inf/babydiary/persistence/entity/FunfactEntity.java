@@ -2,10 +2,11 @@ package hu.unideb.inf.babydiary.persistence.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.FunfactColumName.*;
+import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.FunfactColumnName.*;
 import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_FUNFACT;
 
 @Data
@@ -30,9 +31,6 @@ public class FunfactEntity extends BaseEntity<Long> {
 
     @Column(name = COLUMN_NAME_WEEK)
     private int week;
-
-    @ManyToMany(mappedBy = "funfacts", fetch = FetchType.LAZY)
-    private List<ChildEntity> children;
 
     @Builder
     public FunfactEntity(Long id, String food, String music, String skills, String text, int week) {

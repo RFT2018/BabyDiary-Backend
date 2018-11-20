@@ -30,11 +30,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         assert appointment != null;
         AppointmentEntity appointmentEntity = toEntity.convert(appointment);
         assert appointmentEntity != null;
-        appointmentRepository.save(appointmentEntity); appointment = fromRequest.convert(appointmentRequest);
-        assert appointment != null;
-        AppointmentEntity albumEntity = toEntity.convert(appointment);
-        assert albumEntity != null;
-        appointmentRepository.save(albumEntity);
+        appointmentRepository.save(appointmentEntity);
     }
 
     @Override

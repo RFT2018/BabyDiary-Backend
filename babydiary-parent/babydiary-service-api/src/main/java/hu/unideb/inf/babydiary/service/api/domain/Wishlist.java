@@ -14,5 +14,4 @@ public class Wishlist implements Serializable {
     private String item;
 
     private int price;
-
 }

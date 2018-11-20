@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.WishListColumName.*;
+import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.WishListColumnName.COLUMN_NAME_ITEM;
+import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.WishListColumnName.COLUMN_NAME_PRICE;
 import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_WISHLIST;
 
 @Data

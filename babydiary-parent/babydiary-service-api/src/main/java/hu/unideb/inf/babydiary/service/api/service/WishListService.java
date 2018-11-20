@@ -1,23 +1,15 @@
 package hu.unideb.inf.babydiary.service.api.service;
 
-import hu.unideb.inf.babydiary.commons.pojo.exceptions.BaseException;
-import org.springframework.stereotype.Service;
+import hu.unideb.inf.babydiary.commons.pojo.request.WishlistRequest;
+import hu.unideb.inf.babydiary.service.api.domain.Wishlist;
 
 import java.util.List;
 
-@Service
 public interface WishListService {
 
-    WishListService addCustomer(WishListService wishList) throws BaseException;
+    void saveWishList(WishlistRequest wishlistRequest);
 
-    WishListService updateCustomer(WishListService wishList) throws BaseException;
+    Wishlist findWishlistById(Long id);
 
-    void deleteWishList(Long id) throws BaseException;
-
-    WishListService findWishListById(Long id) throws BaseException;
-
-    List<WishListService> findAllWishList();
-
-    Long countWishLists();
-
+    List<Wishlist> findAll();
 }

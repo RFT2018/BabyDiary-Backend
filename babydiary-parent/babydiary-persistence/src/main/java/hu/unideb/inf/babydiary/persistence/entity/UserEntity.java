@@ -5,9 +5,10 @@ import hu.unideb.inf.babydiary.commons.pojo.enumeration.UserRole;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
-import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.SexColomnName.COLUMN_NAME_SEX;
-import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.UserColumName.*;
+import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.SexColumnName.COLUMN_NAME_SEX;
+import static hu.unideb.inf.babydiary.commons.pojo.table.ColumnName.UserColumnName.*;
 import static hu.unideb.inf.babydiary.commons.pojo.table.TableName.TABLE_NAME_USER;
 import static javax.persistence.EnumType.STRING;
 
@@ -42,9 +43,8 @@ public class UserEntity extends BaseEntity<Long>{
     @Enumerated(value = STRING)
     private UserRole userRole;
 
-//    @ManyToOne
-//    @JoinColumn(name = COLUMN_NAME_FAMILY_ID)
-//    private FamilyEntity familyEntity;
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private List<FamilyEntity> families;
 
     @Builder
     public UserEntity(Long id, String username, String email, String password, String firstName, String lastName, Sex sex, UserRole userRole) {

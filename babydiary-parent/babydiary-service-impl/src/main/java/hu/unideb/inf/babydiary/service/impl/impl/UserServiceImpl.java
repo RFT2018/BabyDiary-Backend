@@ -1,11 +1,11 @@
 package hu.unideb.inf.babydiary.service.impl.impl;
 
-import hu.unideb.inf.babydiary.commons.pojo.exceptions.BaseException;
+import hu.unideb.inf.babydiary.persistence.entity.UserEntity;
 import hu.unideb.inf.babydiary.persistence.repository.UserRepository;
 import hu.unideb.inf.babydiary.service.api.domain.User;
 import hu.unideb.inf.babydiary.service.api.service.UserService;
-import hu.unideb.inf.babydiary.service.impl.converter.UserEntityToUserConverter;
-import hu.unideb.inf.babydiary.service.impl.converter.UserToUserEntityConverter;
+import hu.unideb.inf.babydiary.service.impl.converter.user.UserEntityToUserConverter;
+import hu.unideb.inf.babydiary.service.impl.converter.user.UserToUserEntityConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +20,20 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User addUser(User user) throws BaseException {
+    public void addUser(User user){
 
-        return toUser.convert(userRepository.save(Objects.requireNonNull(toEntity.convert(user))));
+        toUser.convert(userRepository.save(Objects.requireNonNull(toEntity.convert(user))));
     }
 
     @Override
-    public User findUserByUsername(String username) throws BaseException {
-        return null;
+    public User findById(Long id) {
+        UserEntity userEntity = userRepository.getOne(id);
+        return toUser.convert(userEntity);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        UserEntity userEntity = userRepository.findByUsername(username);
+        return toUser.convert(userEntity);
     }
 }

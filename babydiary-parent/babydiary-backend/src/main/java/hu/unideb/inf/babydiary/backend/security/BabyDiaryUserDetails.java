@@ -1,25 +1,24 @@
 package hu.unideb.inf.babydiary.backend.security;
 
 import hu.unideb.inf.babydiary.service.api.domain.User;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
+@Getter
+@RequiredArgsConstructor
 public class BabyDiaryUserDetails implements UserDetails {
 
     private final User user;
 
-    public BabyDiaryUserDetails(User user) {
-        super();
-        this.user = user;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getUserRole().toString()));
     }
 
     @Override
@@ -50,9 +49,5 @@ public class BabyDiaryUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public User getUser() {
-        return user;
     }
 }

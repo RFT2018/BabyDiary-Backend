@@ -11,16 +11,12 @@ import java.io.IOException;
 
 public class OAuthAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-    private HttpMessageConverter messageConverter;
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException exception) throws IOException, ServletException {
-
         response.sendError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized!");
-
     }
 
     public void setMessageConverter(HttpMessageConverter messageConverter) {
-        this.messageConverter = messageConverter;
     }
 }

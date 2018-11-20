@@ -11,6 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAutoConfiguration
 @EnableScheduling
 @Import(PersistenceConfiguration.class)
-@ComponentScan("hu.unideb.inf.babydiary.service.impl")
+@ComponentScan("hu.unideb.inf.babydiary.service")
 public class ServiceConfiguration {
 }

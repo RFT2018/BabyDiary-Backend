@@ -1,14 +1,14 @@
 package hu.unideb.inf.babydiary.service.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import hu.unideb.inf.babydiary.commons.pojo.enumeration.Sex;
+import hu.unideb.inf.babydiary.commons.pojo.enumeration.UserRole;
 import lombok.Builder;
 import lombok.Data;
-import hu.unideb.inf.babydiary.commons.pojo.enumeration.*;
-
-import java.io.Serializable;
 
 @Data
 @Builder
-public class User implements Serializable {
+public class User {
 
     private Long id;
 
@@ -26,4 +26,6 @@ public class User implements Serializable {
 
     private UserRole userRole;
 
+    @JsonIgnore
+    private String passwordConfirm;
 }

@@ -1,27 +1,15 @@
 package hu.unideb.inf.babydiary.service.api.service;
 
-import hu.unideb.inf.babydiary.commons.pojo.exceptions.BaseException;
-import org.springframework.stereotype.Service;
+import hu.unideb.inf.babydiary.commons.pojo.request.FamilyRequest;
+import hu.unideb.inf.babydiary.service.api.domain.Family;
 
 import java.util.List;
 
-@Service
 public interface FamilyService {
 
-    FamilyService addFamily(FamilyService family) throws BaseException;
+    void saveFamily(FamilyRequest familyRequest);
 
-    FamilyService updateFamily(FamilyService family) throws BaseException;
+    Family findFamilyById(Long id);
 
-    void deleteFamily(Long id) throws BaseException;
-
-    FamilyService findFamilyByLastName(String lastname) throws BaseException;
-
-    FamilyService findFamilyById(Long id) throws BaseException;
-
-    List<FamilyService> findAllFamilies();
-
-    List<String> allFamilyEmail();
-
-    Long countFamilies();
-
+    List<Family> findAllFamilies();
 }

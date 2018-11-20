@@ -14,10 +14,11 @@ public class Family implements Serializable {
 
     private String familyName;
 
-    private List<User> userList;
+    private List<User> users;
 
-    private List<Child> childList;
+    private List<Child> children;
 
-    private List<Wishlist> wishLists;
+    private List<Wishlist> wishlists;
 
+    private List<Appointment> appointments;
 }

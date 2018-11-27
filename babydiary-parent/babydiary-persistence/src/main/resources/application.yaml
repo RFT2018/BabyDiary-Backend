@@ -11,11 +11,9 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        dialect: org.hibernate.dialect.H2Dialect
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: evet
-    password: LD3dC1kpv36K
-    url: jdbc:mysql://localhost:3306/babydiary?userSSL=false
-    platform: mysql
-    initialization-mode: always
+      driver-class-name: org.h2.Driver
+      username: sa
+      url: jdbc:h2:../target/babydiarydb
+      initialization-mode: always

@@ -4,7 +4,6 @@ import hu.unideb.inf.babydiary.commons.pojo.request.AppointmentRequest;
 import hu.unideb.inf.babydiary.service.api.domain.Appointment;
 import hu.unideb.inf.babydiary.service.api.service.AppointmentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,14 +22,8 @@ public class AppointmentRestController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = APPOINTMENT_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity responseEntity(@RequestBody AppointmentRequest appointmentRequest) {
-        ResponseEntity result;
-        try {
-            appointmentService.saveAppointment(appointmentRequest);
-            result = ResponseEntity.ok(appointmentRequest);
-        } catch (Exception e) {
-            result = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Caught.");
-        }
-        return result;
+        appointmentService.saveAppointment(appointmentRequest);
+        return ResponseEntity.ok(appointmentRequest);
     }
 
     @PreAuthorize("isAuthenticated()")

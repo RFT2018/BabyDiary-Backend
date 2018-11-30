@@ -1,9 +1,6 @@
 package hu.unideb.inf.babydiary.service.impl.impl;
 
-import hu.unideb.inf.babydiary.commons.pojo.exceptions.BaseException;
-import hu.unideb.inf.babydiary.commons.pojo.exceptions.ViolationException;
 import hu.unideb.inf.babydiary.commons.pojo.request.RegistrationRequest;
-import hu.unideb.inf.babydiary.service.api.exception.ServiceException;
 import hu.unideb.inf.babydiary.service.api.service.RegistrationService;
 import hu.unideb.inf.babydiary.service.api.service.UserService;
 import hu.unideb.inf.babydiary.service.impl.converter.user.RegistrationRequestToUserConverter;
@@ -19,7 +16,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private final RegistrationRequestToUserConverter converter;
 
     @Override
-    public void register(RegistrationRequest registrationRequest) throws ViolationException, ServiceException, BaseException {
+    public void register(RegistrationRequest registrationRequest) {
         userService.addUser(converter.convert(registrationRequest));
     }
 }

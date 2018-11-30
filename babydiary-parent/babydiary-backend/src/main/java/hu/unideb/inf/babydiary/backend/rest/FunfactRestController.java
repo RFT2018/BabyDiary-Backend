@@ -25,14 +25,8 @@ public class FunfactRestController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = FUNFACT_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity responseEntity(@RequestBody FunfactRequest funfactRequest) {
-        ResponseEntity result;
-        try {
-            funfactService.saveFunfact(funfactRequest);
-            result = ResponseEntity.ok(funfactRequest);
-        } catch (Exception e) {
-            result = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Caught.");
-        }
-        return result;
+        funfactService.saveFunfact(funfactRequest);
+        return ResponseEntity.ok(funfactRequest);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -46,7 +40,7 @@ public class FunfactRestController {
     @GetMapping(path = FUNFACT_GETALL)
     public ResponseEntity<?> getAll() {
         List<Funfact> funfacts = funfactService.findAllFunfact();
-        return ResponseEntity.accepted().body(funfactService);
+        return ResponseEntity.accepted().body(funfacts);
     }
 
 }

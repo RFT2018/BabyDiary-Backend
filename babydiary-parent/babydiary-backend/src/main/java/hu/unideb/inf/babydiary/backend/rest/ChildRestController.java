@@ -4,7 +4,6 @@ import hu.unideb.inf.babydiary.commons.pojo.request.ChildRequest;
 import hu.unideb.inf.babydiary.service.api.domain.Child;
 import hu.unideb.inf.babydiary.service.api.service.ChildService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static hu.unideb.inf.babydiary.commons.pojo.path.ChildPath.CHILD_ADD;
-import static hu.unideb.inf.babydiary.commons.pojo.path.ChildPath.CHILD_GETALL;
-import static hu.unideb.inf.babydiary.commons.pojo.path.ChildPath.CHILD_GETONE;
+import static hu.unideb.inf.babydiary.commons.pojo.path.ChildPath.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,14 +21,8 @@ public class ChildRestController {
 
     @RequestMapping(value = CHILD_ADD, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity responseEntity(@RequestBody ChildRequest childRequest) {
-        ResponseEntity result;
-        try {
-            childService.saveChild(childRequest);
-            result = ResponseEntity.ok(childRequest);
-        } catch (Exception e) {
-            result = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Caught.");
-        }
-        return result;
+        childService.saveChild(childRequest);
+        return ResponseEntity.ok(childRequest);
     }
 
     @PreAuthorize("isAuthenticated()")

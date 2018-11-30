@@ -29,7 +29,6 @@ public class FamilyServiceImpl implements FamilyService {
     @Override
     public void saveFamily(FamilyRequest familyRequest) {
         Family family = fromRequest.convert(familyRequest);
-//        familyAbstractValidator.validate(family);
         log.info(">> save: [family:{}]", family);
         assert family != null;
         FamilyEntity converted = toEntity.convert(family);

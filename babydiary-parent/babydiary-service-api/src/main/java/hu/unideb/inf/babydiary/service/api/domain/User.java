@@ -1,6 +1,5 @@
 package hu.unideb.inf.babydiary.service.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import hu.unideb.inf.babydiary.commons.pojo.enumeration.Sex;
 import hu.unideb.inf.babydiary.commons.pojo.enumeration.UserRole;
 import lombok.Builder;
@@ -26,6 +25,4 @@ public class User {
 
     private UserRole userRole;
 
-    @JsonIgnore
-    private String passwordConfirm;
 }

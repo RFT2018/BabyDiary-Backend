@@ -42,6 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/parent/**").hasRole("PARENT")
+                .antMatchers("/appointment/add").permitAll()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
